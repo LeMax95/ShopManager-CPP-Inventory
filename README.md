@@ -15,10 +15,6 @@ Built with C++, it employs a relational database for seamless data management.
 - **Financial Reporting:** Generate reports for sales, revenue, and discounts to gain valuable financial insights.
 - **Customer Checks (CEC) Tracking:** Efficiently monitor and manage electronic checks from customers.
 
-## Functionality
-
-The application offers a user-friendly interface with a menu-driven system for easy navigation. Users can perform various tasks related to student and user management, enhancing efficiency in record keeping.
-
 ## Usage
 
 Launch the application and log in with your credentials.  
