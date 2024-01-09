@@ -1,0 +1,17 @@
+//---------------------------------------------------------------------------
+
+
+#pragma hdrstop
+
+#include "U_DM.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma classgroup "Vcl.Controls.TControl"
+#pragma resource "*.dfm"
+TDMVANZARE *DMVANZARE;
+//---------------------------------------------------------------------------
+__fastcall TDMVANZARE::TDMVANZARE(TComponent* Owner)
+	: TDataModule(Owner)
+{
+}
+//---------------------------------------------------------------------------

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.338,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit3.h=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.570,C:\Users\Derevlenco_V\Documents\Embarcadero\Studio\Projects\Unit3.dfm=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\Unit3.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.990,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.cpp=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.017,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.dfm=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DMM.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.338,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit3.dfm=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.990,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.h=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.373,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DMM.h=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.373,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DMM.dfm=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.896,C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\Unit3.cpp=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\UMAIN.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.896,C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\Unit3.dfm=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\UMAIN.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.373,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit1.dfm=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_AUTENTIFICARE.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.497,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit1.dfm=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\ULISTACECcpp.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.338,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit3.cpp=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.643,=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.720,=C:\Users\Derevlenco_V\Documents\Embarcadero\Studio\Projects\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.896,C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\Unit3.h=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\UMAIN.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.444,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit2.h=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.017,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.cpp=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DMM.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.570,C:\Users\Derevlenco_V\Documents\Embarcadero\Studio\Projects\Unit3.cpp=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.990,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.dfm=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.444,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit2.cpp=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.178,=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.570,C:\Users\Derevlenco_V\Documents\Embarcadero\Studio\Projects\Unit3.h=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\Unit3.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.160,=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.444,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit2.dfm=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.601,C:\Users\Derevlenco_V\Documents\Embarcadero\Studio\Projects\Project3.cbproj=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\MAGAZIN.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.555,C:\Users\Derevlenco_V\Documents\Embarcadero\Studio\Projects\Project3PCH1.h=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\MAGAZINPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.704,=C:\Users\Derevlenco_V\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.204,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\MAGAZINPCH2.h=C:\Users\Максим\Downloads\MAGAZIN LPD\MAGAZIN LPD\MAGAZINPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.398,=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.202,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\MAGAZIN.cbproj=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\MAGAZIN.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.497,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit1.h=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\ULISTACECcpp.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.373,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit1.h=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_AUTENTIFICARE.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.845,C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\MAGAZIN.cbproj=C:\Users\Derevlenco_V\Desktop\MAGAZIN LPD\MAGAZIN.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.233,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\MAGAZIN.cbproj=C:\Users\Максим\Downloads\MAGAZIN LPD\MAGAZIN LPD\MAGAZIN.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.497,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit1.cpp=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\ULISTACECcpp.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.373,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\Unit1.cpp=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_AUTENTIFICARE.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.017,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_RECEPTIE.h=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DMM.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.373,C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DMM.cpp=C:\Users\Максим\OneDrive\Desktop\Projects\Magaz\U_DM.cpp</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="..\..\..\..\..\Максим"/>
+    <File Path="..\..\..\..\Downloads"/>
+    <File Path="..\..\..\..\Downloads\MAGAZIN LPD"/>
+    <File Path="..\..\..\..\Downloads\MAGAZIN LPD\MAGAZIN LPD"/>
+    <File Path="..\..\..\..\Downloads\MAGAZIN LPD\MAGAZIN LPD\UMAIN.cpp"/>
+    <File Path="..\..\..\..\Downloads\MAGAZIN LPD\MAGAZIN LPD\UMAIN.cpp"/>
+    <File Path="..\..\..\..\Downloads\MAGAZIN LPD\MAGAZIN LPD\UMAIN.dfm"/>
+    <File Path="..\..\..\..\Downloads\MAGAZIN LPD\MAGAZIN LPD\UMAIN.h"/>
+    <File Path="MAGAZIN.cpp"/>
+    <File Path="MAGAZINPCH2.h"/>
+    <File Path="U_AUTENTIFICARE.cpp"/>
+    <File Path="U_AUTENTIFICARE.cpp"/>
+    <File Path="U_AUTENTIFICARE.dfm"/>
+    <File Path="U_AUTENTIFICARE.h"/>
+    <File Path="U_RECEPTIE.cpp"/>
+    <File Path="U_RECEPTIE.cpp"/>
+    <File Path="U_RECEPTIE.dfm"/>
+    <File Path="U_RECEPTIE.h"/>
+    <File Path="U_DM.cpp"/>
+    <File Path="U_DM.cpp"/>
+    <File Path="U_DM.dfm"/>
+    <File Path="U_DM.h"/>
+    <File Path="ULISTACECcpp.cpp"/>
+    <File Path="ULISTACECcpp.cpp"/>
+    <File Path="ULISTACECcpp.dfm"/>
+    <File Path="ULISTACECcpp.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

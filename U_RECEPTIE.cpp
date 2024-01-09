@@ -1,0 +1,741 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "U_RECEPTIE.h"
+#include "U_DM.h"
+#include "U_AUTENTIFICARE.h"
+#include "ULISTACECcpp.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TFRECEPTIE *FRECEPTIE;
+int PAG,EMITENT_ID,PRODUS_ID,UM_ID,FACTURA_ID,RECEPTIE_ID;
+//---------------------------------------------------------------------------
+__fastcall TFRECEPTIE::TFRECEPTIE(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+void __fastcall TFRECEPTIE::TOTAL_F(float sii,float svv)
+{
+
+float si=0,sv=0;
+	 si+=sii;
+	 sv+=svv;
+	 Panel11->Caption = "Cumparat: "+FloatToStr(si);
+	 Panel12->Caption = "Vandut: "+FloatToStr(sv);
+	 Panel10->Caption = "Venit: "+ FloatToStr(sv-si);
+}
+
+void __fastcall TFRECEPTIE::TOTAL_F1()
+{
+	   float si = 0,sv=0;
+
+		  if(DM->QFACTURA->IsEmpty())
+		  {
+				while(!DM->QFACTURA->Eof)
+				{
+				  si+=DM->QFACTURAPRET_INTRARE->AsFloat;
+				  sv+=DM->QFACTURAPRET_VANZ->AsFloat;
+				  DM->QFACTURA->Next();
+
+				}
+					Panel12->Caption = FloatToStr(sv);
+					Panel11->Caption = FloatToStr(si);
+					DM->QFACTURA->First();
+		  }
+
+
+
+}
+
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::ECAUTAChange(TObject *Sender)
+{
+
+if(ECAUTA->Text!="")
+{
+   ;
+   AnsiString s =  (RB1->Checked)? "cod_produs" : "denumire";
+   DM->QPRODUS->Close();
+   DM->QPRODUS->SQL->Clear();
+   DM->QPRODUS->SQL->Add("SELECT * FROM PRODUSE WHERE "+ s +" like '"+ECAUTA->Text  +"%'" );
+   DM->QPRODUS->Open();
+
+
+
+
+}
+
+else
+{
+    DM->QPRODUS->Close();
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::PRODUS_MAINClick(TObject *Sender)
+{
+PAG=0;
+DM->QPRODUS->Close();
+
+ECAUTA->Clear();
+MAIN->TabVisible = false;
+FACTURA->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+PRODUS->TabVisible = true;
+EMITENT->TabVisible = false;
+UM->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::UM_MAINClick(TObject *Sender)
+{
+PAG=0;
+DM->QUM->Close();
+DM->QUM->Open();
+ECAUTA->Clear();
+MAIN->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+FACTURA->TabVisible = false;
+PRODUS->TabVisible = false;
+UM->TabVisible = true;
+EMITENT->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::EMITENT_MAIN_BClick(TObject *Sender)
+{
+PAG=0;
+DM->QEMITENT->Close();
+DM->QEMITENT->Open();
+MAIN->TabVisible = false;
+FACTURA->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+PRODUS->TabVisible = false;
+EMITENT->TabVisible = true;
+UM->TabVisible = false;
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::ANULEAZA_EMITENT_BClick(TObject *Sender)
+{
+if(PAG==0)
+{
+MAIN->TabVisible = true;
+FACTURA->TabVisible = false;
+
+}
+ else
+ {
+	 MAIN->TabVisible = false;
+	 FACTURA->TabVisible = true;
+ }
+
+PRODUS->TabVisible = false;
+UM->TabVisible = false;
+EMITENT->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFRECEPTIE::ANUL_UM_BClick(TObject *Sender)
+{
+if(PAG==0)
+{
+MAIN->TabVisible = true;
+FACTURA->TabVisible = false;
+
+}
+ else
+ {
+	 MAIN->TabVisible = false;
+     FACTURA->TabVisible = true;
+ }
+
+PRODUS->TabVisible = false;
+UM->TabVisible = false;
+EMITENT->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::ANULEAZA_PRODUS_BClick(TObject *Sender)
+{
+if(PAG==0)
+{
+MAIN->TabVisible = true;
+FACTURA->TabVisible = false;
+
+}
+ else
+ {
+	 MAIN->TabVisible = false;
+	 FACTURA->TabVisible = true;
+ }
+
+PRODUS->TabVisible = false;
+EMITENT->TabVisible = false;
+UM->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFRECEPTIE::Button4Click(TObject *Sender)
+{
+PAG=1;
+
+DM->QEMITENT->Close();
+DM->QEMITENT->Open();
+
+//EEMITENT->Clear();
+
+/*FGOL->TabVisible = true;
+FMAIN->TabVisible = false;
+FEDITARE->TabVisible = false;
+FINREGISTREAZA->TabVisible = false;
+ */
+
+MAIN->TabVisible = false;
+FACTURA->TabVisible = false;
+EMITENT->TabVisible =  true;
+PRODUS->TabVisible = false;
+UM->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TFRECEPTIE::FACTURI_BClick(TObject *Sender)
+{
+PAG=0;
+
+DM->QDATEFACTURA->Close();
+DM->QDATEFACTURA->Open();
+
+
+
+MAIN->TabVisible = false;
+FACTURA->TabVisible = false;
+EMITENT->TabVisible = false;
+PRODUS->TabVisible = false;
+UM->TabVisible = false;
+DATE_FACTURA->TabVisible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::GESTIONARE_FACTURI_BClick(TObject *Sender)
+{
+PAG=0;
+
+DM->QFACTURA->Close();
+ENR->Clear();
+EEMITENT->Clear();
+Panel10->Caption = "Venit: ";
+Panel11->Caption = "Cumparat: 0.00";
+Panel12->Caption = "Vandut: 0.00" ;
+FGOL->TabVisible = true;
+FMAIN->TabVisible = false;
+FEDITARE->TabVisible = false;
+FINREGISTREAZA->TabVisible = false;
+
+
+MAIN->TabVisible = false;
+FACTURA->TabVisible = true;
+EMITENT->TabVisible = false;
+PRODUS->TabVisible = false;
+UM->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TFRECEPTIE::SELECT_EMITENT_BClick(TObject *Sender)
+{
+EEMITENT->Text = DM->QEMITENTDENUMIRE->AsString;
+EMITENT_ID = DM->QEMITENTEMITENT_ID->AsInteger;
+ANULEAZA_EMITENT_B->Click();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::Button7Click(TObject *Sender)
+{
+PAG=1;
+DM->QPRODUS->Close();
+ECAUTA->Clear();
+MAIN->TabVisible = false;
+FACTURA->TabVisible = false;
+PRODUS->TabVisible = true;
+EMITENT->TabVisible = false;
+UM->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::SELECT_PRODUS_BClick(TObject *Sender)
+{
+EPRODUS1->Text = DM->QPRODUSDENUMIRE->AsString;
+EPRODUS2->Text = DM->QPRODUSDENUMIRE->AsString;
+PRODUS_ID = DM->QPRODUSPRODUSE_ID->AsInteger;
+ANULEAZA_PRODUS_B->Click();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::Button8Click(TObject *Sender)
+{
+PAG=1;
+DM->QUM->Close();
+DM->QUM->Open();
+ECAUTA->Clear();
+MAIN->TabVisible = false;
+FACTURA->TabVisible = false;
+PRODUS->TabVisible = false;
+UM->TabVisible = true;
+EMITENT->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::SELECT_UM_BClick(TObject *Sender)
+{
+		 EUM1->Text = DM->QUMABREVIERE->AsString;
+		 EUM2->Text = DM->QUMABREVIERE->AsString;
+		 UM_ID = DM->QUMUNIT_MASURA_ID->AsInteger;
+		 ANUL_UM_B->Click();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::Button6Click(TObject *Sender)
+{
+if((ENR->Text!="")&&(EEMITENT->Text!=""))
+{
+	DM->QLIBER->Close();
+	DM->QLIBER->SQL->Clear();
+	DM->QLIBER->SQL->Add("SELECT * FROM FACTURA_REC WHERE NR_FACTURA=:NR_FACTURA AND DATA_FACTURA=:DATA_FACTURA AND EMITENT_ID = :EMITENT_ID");
+	DM->QLIBER->ParamByName("nr_factura")->AsString = ENR->Text;
+	DM->QLIBER->ParamByName("DATA_FACTURA")->AsDate = EDATA->Date;
+	DM->QLIBER->ParamByName("EMITENT_ID")->AsInteger =  EMITENT_ID;
+	DM->QLIBER->Open();
+
+	if(!DM->QLIBER->IsEmpty())
+	{
+		  //edit
+
+		  DM->QFACTURA->Close();
+		  DM->QFACTURA->ParamByName("FACTURA_REC_ID")->AsInteger = 	DM->QLIBER->FieldByName("FACTURA_REC_ID")->AsInteger;
+		  DM->QFACTURA->Open();
+		  FMAIN->TabVisible = true;
+		  FGOL->TabVisible = false;
+		  FINREGISTREAZA->TabVisible = false;
+		  FEDITARE->TabVisible = false;
+          TOTAL_F1();
+		  FACTURA_ID =  DM->QLIBER->FieldByName("FACTURA_REC_ID")->AsInteger;
+
+
+
+	}
+
+	else
+	{
+		//creare factura
+		if (MessageDlg("Doriti sa inregistrati factura?", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo,0) == mrYes)
+		  DM->PINSFACTURA->Close();
+		  DM->PINSFACTURA->ParamByName("@N")->AsString = ENR->Text;
+		  DM->PINSFACTURA->ParamByName("@D")->AsDate = EDATA->Date;
+		  DM->PINSFACTURA->ParamByName("@E")->AsInteger = EMITENT_ID;
+		  DM->PINSFACTURA->ExecProc();
+		  FACTURA_ID =  DM->PINSFACTURA->ParamByName("@RETURN_VALUE")->AsInteger;
+
+		  FMAIN->TabVisible = false;
+		  FGOL->TabVisible = false;
+		  FINREGISTREAZA->TabVisible = true;
+		  FEDITARE->TabVisible = false;
+    }
+}
+
+else
+{
+    ShowMessage("Nu sunt indicate datele despre factura");
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::EEMITENTKeyPress(TObject *Sender, System::WideChar &Key)
+
+{
+Key=0;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+void __fastcall TFRECEPTIE::FACTURA_REGISTER_BClick(TObject *Sender)
+{
+if(EPRODUS1->Text!=""&&EUM1->Text!="")
+	{
+	   DM->QLIBER->Close();
+	   DM->QLIBER->SQL->Clear();
+	   DM->QLIBER->SQL->Add("INSERT INTO RECEPTIE (PRODUSE_ID,UNIT_MASURA_ID,FACTURA_REC_ID,FIRMA_OPERATOR_ID,PRET_INTRARE,PRET_VANZ,TVA,STOCK1) ");
+	   DM->QLIBER->SQL->Add("VALUES (:PRODUSE_ID,:UM_ID,:FACTURA_REC_ID,:FIRMA_OPERATOR_ID,:PRET_INTRARE,:PRET_VANZ,:TVA,:STOCK1) ");
+		DM->QLIBER->ParamByName("PRODUSE_ID")->AsInteger = PRODUS_ID;
+		DM->QLIBER->ParamByName("UM_ID")->AsInteger = UM_ID;
+		DM->QLIBER->ParamByName("FACTURA_REC_ID")->AsInteger = FACTURA_ID;
+		DM->QLIBER->ParamByName("FIRMA_OPERATOR_ID")->AsInteger = F_AUTENTIFICARE->UTILIZATOR_ID;
+		DM->QLIBER->ParamByName("PRET_INTRARE")->AsFloat = EPRET1->Text.ToDouble();
+		DM->QLIBER->ParamByName("PRET_VANZ")->AsInteger = EPRET2->Text.ToDouble();
+		DM->QLIBER->ParamByName("TVA")->AsInteger = ETVA1->Text.ToInt();
+		DM->QLIBER->ParamByName("STOCK1")->AsInteger = ECANTITATE1->Text.ToInt();
+
+		DM->QLIBER->ExecSQL();
+		DM->QFACTURA->Close();
+		DM->QFACTURA->ParamByName("FACTURA_REC_ID")->AsInteger = FACTURA_ID;
+		DM->QFACTURA->Open();
+
+		TOTAL_F(EPRET1->Text.ToDouble(),EPRET2->Text.ToDouble());
+
+
+		ECANTITATE1->Clear();
+		EPRET1->Clear();
+		EPRET2->Clear();
+		EPRODUS1->Clear();
+		EUM1->Clear();
+
+        ShowMessage("Inregistrare cu succes!");
+	}
+
+else
+	{
+
+	 ShowMessage("Nu sunt specificate toate datele necesare");
+
+	}
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFRECEPTIE::FACTURA_ANUKEAZA_BClick(TObject *Sender)
+{
+
+FMAIN->TabVisible = true;
+FINREGISTREAZA->TabVisible = false;
+FEDITARE->TabVisible = false;
+FGOL->TabVisible = false;
+
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFRECEPTIE::Button1Click(TObject *Sender)
+{
+FMAIN->TabVisible = false;
+FGOL->TabVisible = false;
+FINREGISTREAZA->TabVisible = true;
+FEDITARE->TabVisible = false;
+
+
+ECANTITATE1->Clear();
+EPRET1->Clear();
+EPRET2->Clear();
+EPRODUS1->Clear();
+EUM1->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::Button2Click(TObject *Sender)
+{
+FMAIN->TabVisible =  false;
+FGOL->TabVisible = false;
+FINREGISTREAZA->TabVisible = false;
+FEDITARE->TabVisible = true;
+
+FACTURA_ID =  DM->QFACTURAFACTURA_REC_ID->AsInteger;
+PRODUS_ID =   DM->QFACTURAPRODUSE_ID->AsInteger;
+UM_ID =       DM->QFACTURAUNIT_MASURA_ID->AsInteger;
+RECEPTIE_ID = DM->QFACTURARECEPTIE_ID->AsInteger;
+
+ECANTITATE2->Text = DM->QFACTURASTOCK1->AsString;
+EPRET21->Text  = DM->QFACTURAPRET_INTRARE->AsString;
+EPRET22->Text  = DM->QFACTURAPRET_VANZ->AsString;
+EPRODUS2->Text = DM->QFACTURADENUMIRE->AsString;
+EUM2->Text  =   DM->QFACTURAABREVIERE->AsString;
+ETVA2->Text =   DM->QFACTURATVA->AsString;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::Button11Click(TObject *Sender)
+{
+if(EPRODUS2->Text!=""&&EUM2->Text!="")
+	{
+	   DM->QLIBER->Close();
+	   DM->QLIBER->SQL->Clear();
+	   DM->QLIBER->SQL->Add("UPDATE RECEPTIE SET PRODUSE_ID=:PRODUSE_ID,UNIT_MASURA_ID=:UM_ID,FIRMA_OPERATOR_ID=:FIRMA_OPERATOR_ID,PRET_INTRARE=:PRET_INTRARE,PRET_VANZ=:PRET_VANZ,TVA=:TVA,STOCK1=:STOCK1 ");
+
+	   DM->QLIBER->SQL->Add("WHERE RECEPTIE_ID=:RECEPTIE_ID");
+		DM->QLIBER->ParamByName("PRODUSE_ID")->AsInteger = PRODUS_ID;
+
+		DM->QLIBER->ParamByName("UM_ID")->AsInteger = UM_ID;
+		DM->QLIBER->ParamByName("RECEPTIE_ID")->AsInteger = RECEPTIE_ID;
+		DM->QLIBER->ParamByName("FIRMA_OPERATOR_ID")->AsInteger = F_AUTENTIFICARE->UTILIZATOR_ID;
+		DM->QLIBER->ParamByName("PRET_INTRARE")->AsFloat = EPRET21->Text.ToDouble();
+		DM->QLIBER->ParamByName("PRET_VANZ")->AsInteger = EPRET22->Text.ToDouble();
+		DM->QLIBER->ParamByName("TVA")->AsInteger = ETVA2->Text.ToInt();
+		DM->QLIBER->ParamByName("STOCK1")->AsInteger = ECANTITATE2->Text.ToInt();
+
+		DM->QLIBER->ExecSQL();
+		DM->QFACTURA->Close();
+		DM->QFACTURA->ParamByName("FACTURA_REC_ID")->AsInteger = FACTURA_ID;
+		DM->QFACTURA->Open();
+
+		TOTAL_F(EPRET21->Text.ToDouble(),EPRET22->Text.ToDouble());
+	
+		ECANTITATE2->Clear();
+		EPRET21->Clear();
+		EPRET22->Clear();
+        ETVA2->Clear();
+		EPRODUS2->Clear();
+		EUM2->Clear();
+
+		ShowMessage("Editare cu succes!");
+        FACTURA_ANUKEAZA_B->Click();
+	}
+
+else
+	{
+
+	 ShowMessage("Nu sunt specificate toate datele necesare");
+
+	}
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFRECEPTIE::Button3Click(TObject *Sender)
+{
+ if(!DM->QFACTURA->IsEmpty())
+ {
+	  if (MessageDlg("Doriti sa eliminati produsul "+DM->QFACTURADENUMIRE->AsString+"?", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo,0) == mrYes)
+		 {
+	   DM->QLIBER->Close();
+	   DM->QLIBER->SQL->Clear();
+	   DM->QLIBER->SQL->Add("UPDATE RECEPTIE SET ACTIV=0 WHERE RECEPTIE_ID=:RECEPTIE_ID ");
+
+		DM->QLIBER->ParamByName("RECEPTIE_ID")->AsInteger = DM->QFACTURARECEPTIE_ID->AsInteger;
+
+
+		DM->QLIBER->ExecSQL();
+		DM->QFACTURA->Close();
+		DM->QFACTURA->ParamByName("FACTURA_REC_ID")->AsInteger = FACTURA_ID;
+		DM->QFACTURA->Open();
+         }
+
+ }
+
+ else
+ {
+	 ShowMessage("Nu sunt date de eliminat");
+ }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::Button5Click(TObject *Sender)
+{
+MAIN->TabVisible = true;
+FACTURA->TabVisible = false;
+EMITENT->TabVisible = false;
+PRODUS->TabVisible = false;
+UM->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFRECEPTIE::DBGrid2DblClick(TObject *Sender)
+{
+PAG=1;
+FGOL->TabVisible = true;
+FMAIN->TabVisible = false;
+FEDITARE->TabVisible = false;
+FINREGISTREAZA->TabVisible = false;
+
+
+MAIN->TabVisible = false;
+FACTURA->TabVisible = true;
+EMITENT->TabVisible = false;
+PRODUS->TabVisible = false;
+UM->TabVisible = false;
+DATE_FACTURA->TabVisible = false;
+
+DM->QFACTURA->Close();
+ENR->Text = DM->QDATEFACTURA->FieldByName("NR_FACTURA")->AsString;
+EDATA->Date = DM->QDATEFACTURA->FieldByName("DATA_FACTURA")->AsString;
+EEMITENT->Text = DM->QDATEFACTURA->FieldByName("FIRMA")->AsString;
+EMITENT_ID = DM->QDATEFACTURA->FieldByName("EMITENT_ID")->AsInteger;
+Button6->Click();
+
+
+
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFRECEPTIE::CheckBox1Click(TObject *Sender)
+{
+ if(CheckBox1->Checked)
+ {
+	Edit1->Enabled = true;
+ }
+
+ else
+ {
+	 Edit1->Enabled = false;
+ }
+
+		Edit1->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::CheckBox3Click(TObject *Sender)
+{
+	  if(CheckBox3->Checked)
+ {
+	Edit2->Enabled = true;
+ }
+
+ else
+ {
+	 Edit2->Enabled = false;
+ }
+
+		Edit2->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::CheckBox4Click(TObject *Sender)
+{
+ if(CheckBox4->Checked)
+ {
+	Edit3->Enabled = true;
+ }
+
+ else
+ {
+	 Edit3->Enabled = false;
+ }
+
+		Edit3->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::CheckBox2Click(TObject *Sender)
+{
+
+DateTimePicker1->Date = Now();
+DateTimePicker2->Date = Now();
+ if(CheckBox2->Checked)
+ {
+	DateTimePicker1->Enabled = true;
+	DateTimePicker2->Enabled = true;
+
+ }
+
+ else
+ {
+   DateTimePicker1->Enabled = false;
+	DateTimePicker2->Enabled = false;
+ }
+
+		Edit1->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFRECEPTIE::Button14Click(TObject *Sender)
+{
+
+AnsiString s;
+s = " SELECT E.EMITENT_ID,F.FACTURA_REC_ID,F.DATA_FACTURA,F.NR_FACTURA,E.DENUMIRE AS FIRMA, " ;
+s+= " COUNT (*) AS NR_POZ,SUM(R.PRET_INTRARE) AS PRET_INTRARE,SUM(R.PRET_VANZ) AS PRET_VANZARE ";
+s+= " FROM  ";
+s+= " RECEPTIE R INNER JOIN FACTURA_REC F ON R.FACTURA_REC_ID = F.FACTURA_REC_ID  ";
+s+= " INNER JOIN PRODUSE P ON P.PRODUSE_ID = R.PRODUSE_ID ";
+s+= " INNER JOIN UNIT_MASURA UM ON UM.UNIT_MASURA_ID = R.UNIT_MASURA_ID ";
+s+= " INNER JOIN EMITENT E ON E.EMITENT_ID = F.EMITENT_ID ";
+s+= " WHERE R.ACTIV = 1 ";
+
+if(CheckBox1->Checked)
+{
+	s+= " AND F.NR_FACTURA = '"+Edit1->Text+"'";
+}
+
+if(CheckBox2->Checked)
+{
+	s+= " AND F.DATA_FACTURA between :d1 and :d2";
+}
+
+if(CheckBox3->Checked)
+{
+	s+= " AND E.DENUMIRE LIKE '%"+Edit2->Text+ "%' ";
+}
+
+if(CheckBox4->Checked)
+{
+	s+= " AND P.PRODUSE_ID IN (SELECT PRODUSE_ID FROM PRODUSE WHERE DENUMIRE LIKE'%"+Edit3->Text+ "%' )";
+}
+s+= " GROUP BY  E.EMITENT_ID,F.DATA_FACTURA,F.NR_FACTURA,E.DENUMIRE,F.FACTURA_REC_ID ";
+s+= " ORDER BY DATA_FACTURA DESC ";
+
+DM->QDATEFACTURA->Close();
+DM->QDATEFACTURA->SQL->Clear();
+DM->QDATEFACTURA->SQL->Add(s);
+
+if(CheckBox2->Checked)
+{
+  DM->QDATEFACTURA->ParamByName("d1")->AsDate = DateTimePicker1->Date;
+  DM->QDATEFACTURA->ParamByName("d2")->AsDate = DateTimePicker2->Date ;
+}
+
+ DM->QDATEFACTURA->Open();
+
+ float si = 0,sv=0;
+
+		  if(!DM->QDATEFACTURA->IsEmpty())
+		  {
+				while(!DM->QDATEFACTURA->Eof)
+				{
+				  si+=DM->QDATEFACTURAPRET_INTRARE->AsFloat;
+				  sv+=DM->QDATEFACTURAPRET_VANZARE->AsFloat;
+				  DM->QDATEFACTURA->Next();
+
+				}
+					Panel15->Caption = FloatToStr(sv);
+					Panel14->Caption = FloatToStr(si);
+					Panel13->Caption = "Venit:"+FloatToStr(sv-si);
+					DM->QDATEFACTURA->First();
+		  }
+
+		  else{
+				Panel14->Caption = "Cumparat:0.00";
+				Panel15->Caption = "Vandut:0.00";
+				Panel13->Caption = "Venit: 0.00";
+          }
+
+
+
+}
+//---------------------------------------------------------------------------
+

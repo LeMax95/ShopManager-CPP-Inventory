@@ -1,0 +1,90 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "U_AUTENTIFICARE.h"
+#include "U_DM.h"
+#include "U_RECEPTIE.h"
+#include "UMAIN.h"
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TF_AUTENTIFICARE *F_AUTENTIFICARE;
+TIniFile *Ini = new TIniFile( GetCurrentDir()+"\\config.ini");
+//---------------------------------------------------------------------------
+__fastcall TF_AUTENTIFICARE::TF_AUTENTIFICARE(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TF_AUTENTIFICARE::ANULEAZA_BClick(TObject *Sender)
+{
+if(MessageDlg("Inchidem aplicatia? ",mtConfirmation,TMsgDlgButtons()<<mbYes<<mbNo,0)==mrYes)
+Application->Terminate();
+}
+//---------------------------------------------------------------------------
+void __fastcall TF_AUTENTIFICARE::FormShow(TObject *Sender)
+{
+DM->QLIBER->Close();
+DM->QLIBER->SQL->Clear();
+DM->QLIBER->SQL->Add("SELECT * FROM FIRMA");
+DM->QLIBER->Open();
+
+FILIALA->Clear();
+
+while(!DM->QLIBER->Eof)
+{
+  FILIALA->Items->Add(DM->QLIBER->FieldByName("NUME")->AsString);
+  DM->QLIBER->Next();
+
+}
+
+DM->QLIBER->Close();
+DM->QLIBER->SQL->Clear();
+DM->QLIBER->SQL->Add("SELECT * FROM OPERATOR");
+DM->QLIBER->Open();
+
+  FILIALA->Text = Ini->ReadString("AUTENTIFICARE","FILIALA","");
+  UTILIZATOR->Text = Ini->ReadString("AUTENTIFICARE","UTILIZATOR","");
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TF_AUTENTIFICARE::AUTENTIFICA_BClick(TObject *Sender)
+{
+if((FILIALA->Text!="")&&(UTILIZATOR->Text.Length()>0)&&(PAROLA->Text!=""))
+{
+   DM->Q_AUTENTIFICARE->Close();
+   DM->Q_AUTENTIFICARE->ParamByName("NUME")->AsString=FILIALA->Text;
+   DM->Q_AUTENTIFICARE->ParamByName("USERNAME")->AsString=UTILIZATOR->Text;
+   DM->Q_AUTENTIFICARE->ParamByName("PASS")->AsString=PAROLA->Text;
+   DM->Q_AUTENTIFICARE->Open();
+
+   if(!DM->Q_AUTENTIFICARE->IsEmpty())
+   {
+	  Ini->WriteString("Autentificare","FILIALA",FILIALA->Text);
+	  Ini->WriteString("Autentificare","UTILIZATOR",UTILIZATOR->Text);
+
+	  UTILIZATOR_ID=DM->Q_AUTENTIFICARE->FieldByName("FIRMA_OPERATOR_ID")->AsInteger;
+	  FMAIN->Label2->Caption =  DM->Q_AUTENTIFICARE->FieldByName("FUNCTIA")->AsString;
+	  FMAIN->Label3->Caption =  DM->Q_AUTENTIFICARE->FieldByName("npp")->AsString;
+	  FMAIN->Label19->Caption = DM->Q_AUTENTIFICARE->FieldByName("FIRMA")->AsString;
+
+          Close();
+	  FMAIN->AlphaBlend=false;
+   }
+
+   else
+   {
+	   PAROLA->Clear();
+	   ShowMessage("Autentificare esuata");
+   }
+}
+
+else
+{
+	ShowMessage("Nu sunt introduse toate campurile");
+}
+}
+//---------------------------------------------------------------------------

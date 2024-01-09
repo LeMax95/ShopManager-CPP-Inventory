@@ -1,0 +1,144 @@
+//---------------------------------------------------------------------------
+
+#ifndef U_RECEPTIEH
+#define U_RECEPTIEH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.ComCtrls.hpp>
+#include <Vcl.Imaging.pngimage.hpp>
+#include <Data.DB.hpp>
+#include <Vcl.DBGrids.hpp>
+#include <Vcl.Grids.hpp>
+#include <Vcl.Buttons.hpp>
+//---------------------------------------------------------------------------
+class TFRECEPTIE : public TForm
+{
+__published:
+	// IDE-managed Components
+	TPanel *Panel1;
+	TPanel *Panel2;
+	TPageControl *RECEPTIE_PC;
+	TTabSheet *MAIN;
+	TTabSheet *FACTURA;
+	TTabSheet *PRODUS;
+	TTabSheet *UM;
+	TButton *FACTURI_B;
+	TButton *GESTIONARE_FACTURI_B;
+	TButton *PRODUS_MAIN;
+	TButton *UM_MAIN;
+	TButton *CLIENTI_MAIN_B;
+	TImage *Image1;
+	TPanel *Panel3;
+	TButton *SELECT_UM_B;
+	TButton *ANUL_UM_B;
+	TDBGrid *UM_GRID;
+	TPanel *Panel4;
+	TButton *SELECT_PRODUS_B;
+	TButton *ANULEAZA_PRODUS_B;
+	TDBGrid *GRID_PRODUS;
+	TTabSheet *EMITENT;
+	TPanel *Panel5;
+	TButton *SELECT_EMITENT_B;
+	TButton *ANULEAZA_EMITENT_B;
+	TDBGrid *GRID_EMITENT;
+	TButton *EMITENT_MAIN_B;
+	TGroupBox *GroupBox1;
+	TRadioButton *RB1;
+	TRadioButton *RB2;
+	TEdit *ECAUTA;
+	TImage *Image2;
+	TLabel *Label1;
+	TImage *Image3;
+	TLabel *Label2;
+	TLabel *Label3;
+	TSpeedButton *SpeedButton4;
+	TSpeedButton *SpeedButton3;
+	TSpeedButton *SpeedButton2;
+	TSpeedButton *SpeedButton1;
+	TPanel *Panel6;
+	TPanel *Panel7;
+	TPanel *Panel8;
+	TDBGrid *DBGrid1;
+	TPageControl *FACTURA_PC;
+	TTabSheet *FMAIN;
+	TTabSheet *FINREGISTREAZA;
+	TTabSheet *FEDITARE;
+	TButton *Button1;
+	TButton *Button2;
+	TButton *Button3;
+	TButton *Button5;
+	TLabel *Label4;
+	TEdit *ENR;
+	TLabel *Label5;
+	TDateTimePicker *EDATA;
+	TLabel *Label6;
+	TEdit *EEMITENT;
+	TButton *Button4;
+	TButton *Button6;
+	TEdit *EPRODUS1;
+	TButton *Button7;
+	TEdit *EUM1;
+	TButton *Button8;
+	TEdit *ECANTITATE1;
+	TEdit *EPRET1;
+	TEdit *EPRET2;
+	TEdit *ETVA1;
+	TButton *FACTURA_REGISTER_B;
+	TButton *FACTURA_ANUKEAZA_B;
+	TEdit *EPRODUS2;
+	TButton *Button9;
+	TButton *Button10;
+	TEdit *EUM2;
+	TEdit *ECANTITATE2;
+	TEdit *EPRET21;
+	TEdit *ETVA2;
+	TEdit *EPRET22;
+	TButton *Button11;
+	TButton *Button12;
+	TTabSheet *FGOL;
+	TTabSheet *DATE_FACTURA;
+	TPanel *Panel9;
+	TDBGrid *DBGrid2;
+	TButton *Button13;
+	TPanel *Panel10;
+	TPanel *Panel11;
+	TPanel *Panel12;
+	void __fastcall ECAUTAChange(TObject *Sender);
+	void __fastcall PRODUS_MAINClick(TObject *Sender);
+	void __fastcall UM_MAINClick(TObject *Sender);
+	void __fastcall EMITENT_MAIN_BClick(TObject *Sender);
+	void __fastcall ANULEAZA_EMITENT_BClick(TObject *Sender);
+	void __fastcall ANUL_UM_BClick(TObject *Sender);
+	void __fastcall ANULEAZA_PRODUS_BClick(TObject *Sender);
+	void __fastcall Button4Click(TObject *Sender);
+	void __fastcall FACTURI_BClick(TObject *Sender);
+	void __fastcall GESTIONARE_FACTURI_BClick(TObject *Sender);
+	void __fastcall SELECT_EMITENT_BClick(TObject *Sender);
+	void __fastcall Button7Click(TObject *Sender);
+	void __fastcall SELECT_PRODUS_BClick(TObject *Sender);
+	void __fastcall Button8Click(TObject *Sender);
+	void __fastcall SELECT_UM_BClick(TObject *Sender);
+	void __fastcall Button6Click(TObject *Sender);
+	void __fastcall EEMITENTKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall FACTURA_REGISTER_BClick(TObject *Sender);
+	void __fastcall FACTURA_ANUKEAZA_BClick(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall Button11Click(TObject *Sender);
+	void __fastcall Button3Click(TObject *Sender);
+	void __fastcall Button5Click(TObject *Sender);
+	void __fastcall DBGrid2DblClick(TObject *Sender);
+	void __fastcall TOTAL_F(float sii,float svv);
+	void __fastcall TOTAL_F1();
+private:	// User declarations
+public:		// User declarations
+	__fastcall TFRECEPTIE(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TFRECEPTIE *FRECEPTIE;
+//---------------------------------------------------------------------------
+#endif
